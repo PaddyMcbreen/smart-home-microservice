@@ -12,3 +12,9 @@ module "new-vpc" {
   enable_internet_gateway = true
 
 }
+
+// Security Module
+module "security_group" {
+  source = "./modules/security_groups"
+  vpc_id = module.new-vpc.vpc_id
+}
