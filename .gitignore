@@ -1,2 +1,4 @@
 .terraform
 .env.local
+terraform-project-key.pem
+terraform-project-key.pemZone.Identifier

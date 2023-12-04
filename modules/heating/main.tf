@@ -19,7 +19,7 @@ data "aws_ami" "ubuntu" {
 
 
 // Ec2 Instance for Lighting:
-resource "aws_instance" "lighting_server" {
+resource "aws_instance" "heating_server" {
 
   instance_type               = var.instance_type
   subnet_id                   = var.public_subnets_ids[0]
@@ -27,16 +27,17 @@ resource "aws_instance" "lighting_server" {
   ami                         = data.aws_ami.ubuntu.id
   associate_public_ip_address = true
   key_name = var.key_name
+  # public_dns = 
 
   tags = {
-    Name = "Lighting_Ec2"
+    Name = "Heating_Ec2"
   }
 }
 
 
 // DynamoDB Setup:
-resource "aws_dynamodb_table" "lighting_table" {
-  name           = "lighting_table"
+resource "aws_dynamodb_table" "heating_table" {
+  name           = "heating_table"
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
   write_capacity = 20
