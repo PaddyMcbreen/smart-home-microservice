@@ -31,3 +31,14 @@ module "lighting" {
   security_group_id  = module.security_group.security_group_id
   public_subnets_ids = module.vpc.public_subnets_ids
 }
+
+
+// Heating Module
+module "heating" {
+  source = "./modules/heating"
+
+  instance_type      = var.instance_type
+  security_group_id  = module.security_group.security_group_id
+  public_subnets_ids = module.vpc.public_subnets_ids
+  key_name = module.lighting.key_name
+}
