@@ -26,20 +26,48 @@ module "security_group" {
 module "microservices" {
   source = "./modules/microservices"
 
-  name = "new_ami"
+  name     = "new_ami"
   key_name = "terraform-project-key"
 
   instance_type      = var.instance_type
-  security_group_ids  = module.security_group.security_group_id
+  security_group_ids = module.security_group.security_group_id
   public_subnets_ids = module.vpc.public_subnets_ids
 }
 
 
 // Loadbalancer Module
-module "loadbalancer" {
-  source = "./modules/loadbalancer"
+module "load_balancer" {
+  source = "./modules/load_balancer"
 
-  lb_name = "microservicesLB"
+  lb_name            = "microservicesLB"
   public_subnets_ids = module.vpc.public_subnets_ids
-  security_group_ids  = [module.security_group.security_group_id]
+  security_group_ids = [module.security_group.security_group_id]
+
+  // Target Group Settings:
+  vpc_id = module.vpc.vpc_id
+
+  // Lb Listner Settings:
+  lb_listner_name = "lb_listner"
+
+
 }
+
+
+// Auto_scaling Module
+# module "auto_scaling" {
+#   source = "./modules/auto_scaling"
+
+#   // Auto Scaling Settings:
+#   name = "microservice_asg"
+#   min_size = 3
+#   max_size = 9
+#   desired_size = 3
+#   health_check_grace_period = 300
+
+#   public_subnets_ids = module.vpc.public_subnets_ids
+#   lb_name = [module.load_balancer.lb_name]
+
+#   // Launch Template Settings:
+#   instance_type = "t2.micro"
+#   image_id = module.microservices.image_id
+# }
