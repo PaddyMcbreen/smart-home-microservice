@@ -6,7 +6,7 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20231127"]
   }
 
   filter {
@@ -42,8 +42,8 @@ tags = {
 // DynamoDB Setup for all microservices:
 resource "aws_dynamodb_table" "microservices_table" {
 
-count = 3
-name           = "${element(["lighting", "heating", "status"], count.index)}_table"
+count = 2
+name           = "${element(["lighting", "heating"], count.index)}_table"
 billing_mode   = "PROVISIONED"
 read_capacity  = 20
 write_capacity = 20

@@ -18,7 +18,7 @@ module "security_group" {
   source = "./modules/security_groups"
   vpc_id = module.vpc.vpc_id
 
-  security_group_name = "new_security_group"
+  security_group_name = "microservices_sg"
 }
 
 
