@@ -22,6 +22,7 @@ module "security_group" {
 }
 
 
+// Microservices Module
 module "microservices" {
   source = "./modules/microservices"
 
@@ -29,6 +30,16 @@ module "microservices" {
   key_name = "terraform-project-key"
 
   instance_type      = var.instance_type
-  security_group_id  = module.security_group.security_group_id
+  security_group_ids  = module.security_group.security_group_id
   public_subnets_ids = module.vpc.public_subnets_ids
+}
+
+
+// Loadbalancer Module
+module "loadbalancer" {
+  source = "./modules/loadbalancer"
+
+  lb_name = "microservicesLB"
+  public_subnets_ids = module.vpc.public_subnets_ids
+  security_group_ids  = [module.security_group.security_group_id]
 }

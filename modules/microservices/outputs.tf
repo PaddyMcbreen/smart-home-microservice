@@ -6,8 +6,8 @@ output "public_subnets_ids" {
     value = var.public_subnets_ids[0]
 }
 
-output "security_group_id" {
-    value = [var.security_group_id]
+output "security_group_ids" {
+    value = [var.security_group_ids]
 }
 
 output "key_name" {
