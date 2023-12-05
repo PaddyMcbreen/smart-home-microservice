@@ -18,8 +18,8 @@ data "aws_ami" "ubuntu" {
 }
 
 
-// Ec2 Instance for Heating:
-resource "aws_instance" "heating_server" {
+// Ec2 Instance for Stauts:
+resource "aws_instance" "status_server" {
 
   instance_type               = var.instance_type
   subnet_id                   = var.public_subnets_ids[0]
@@ -29,14 +29,14 @@ resource "aws_instance" "heating_server" {
   key_name = var.key_name
 
   tags = {
-    Name = "Heating_Ec2"
+    Name = "Status_Ec2"
   }
 }
 
 
 // DynamoDB Setup:
-resource "aws_dynamodb_table" "heating_table" {
-  name           = "heating_table"
+resource "aws_dynamodb_table" "status_table" {
+  name           = "status_table"
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
   write_capacity = 20
