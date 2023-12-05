@@ -18,3 +18,9 @@ variable "key_name" {
     description = "The key name you want to use for this instance"
     default = "terraform-project-key"
 }
+
+variable "name" {
+    type = string 
+    description = "The name of your AMI"
+    default = "new_ami"
+}
