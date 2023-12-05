@@ -4,7 +4,7 @@ data "http" "myipaddr" {
 
 // Security Group
 resource "aws_security_group" "security_group" {
-  name        = "security_group"
+  name        = "microservices_sg"
   description = "security group for subnets"
   vpc_id      = var.vpc_id
 
