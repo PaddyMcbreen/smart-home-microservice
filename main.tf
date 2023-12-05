@@ -42,3 +42,14 @@ module "heating" {
   public_subnets_ids = module.vpc.public_subnets_ids
   key_name = module.lighting.key_name
 }
+
+
+// Status Module
+module "status" {
+  source = "./modules/status"
+
+  instance_type      = var.instance_type
+  security_group_id  = module.security_group.security_group_id
+  public_subnets_ids = module.vpc.public_subnets_ids
+  key_name = module.lighting.key_name
+}
