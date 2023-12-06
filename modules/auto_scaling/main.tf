@@ -1,15 +1,22 @@
 // Launch Templates For All Services Created:
 resource "aws_launch_template" "launch_templates" {
   count = var.num_launchTemplates
-  name_prefix   = "${element(["lighting", "heating", "status"], count.index)}_lt"
-  image_id      = "${element(["ami-08ec351898b2d71a9", "ami-08ec351898b2d71a9", "ami-08ec351898b2d71a9"], count.index)}"
+
+  name = var.lt_name[count.index]
+  image_id = var.image_id[count.index]
+  
   instance_type = "t2.micro"
+  key_name = var.key_name
+
+  tags = {
+    name = "${var.lt_name[count.index]}_lt"
+  }
 }
 
 // Auto Scaling Group Setup:
 resource "aws_autoscaling_group" "microservice_asg" {
   count = var.num_asg
-  name                      = "${element(["lighting", "heating", "status"], count.index)}_asg"
+  name = "${var.name_asg[count.index]}_asg"
 
   min_size                  = var.min_size
   max_size                  = var.max_size

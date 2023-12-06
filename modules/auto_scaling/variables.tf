@@ -50,3 +50,23 @@ variable "num_asg" {
     default = 3
 }
 
+variable "lt_name" {
+    type = list(string) 
+    description = "A list of names for the launch template resource"
+}
+
+variable "image_id" {
+    type = list(string)
+    description = "A list of AMi ids for the launch template resource"
+}
+
+variable "key_name" {
+    type = string 
+    description = "The name of the key pair your want to use"
+}
+
+variable "name_asg" {
+    type = list(string)
+    description = "The names of the auto scaling groups created"
+}
+
