@@ -32,6 +32,9 @@ module "microservices" {
   instance_type      = var.instance_type
   security_group_ids = module.security_group.security_group_id
   public_subnets_ids = module.vpc.public_subnets_ids
+
+  num_ami = 3
+  num_dynamoTable = 2
 }
 
 
@@ -45,29 +48,27 @@ module "load_balancer" {
 
   // Target Group Settings:
   vpc_id = module.vpc.vpc_id
+  num_targetGroups = 3
 
   // Lb Listner Settings:
   lb_listner_name = "lb_listner"
-
-
 }
 
 
-// Auto_scaling Module
-# module "auto_scaling" {
-#   source = "./modules/auto_scaling"
+# // Auto_scaling Module
+module "auto_scaling" {
+  source = "./modules/auto_scaling"
 
-#   // Auto Scaling Settings:
-#   name = "microservice_asg"
-#   min_size = 3
-#   max_size = 9
-#   desired_size = 3
-#   health_check_grace_period = 300
+   // Auto Scaling Settings:
+  min_size = 1
+  max_size = 3
+  desired_size = 2
+  health_check_grace_period = 300
+  public_subnets_ids = module.vpc.public_subnets_ids
 
-#   public_subnets_ids = module.vpc.public_subnets_ids
-#   lb_name = [module.load_balancer.lb_name]
+  num_launchTemplates = 3
+  num_asg = 3
 
-#   // Launch Template Settings:
-#   instance_type = "t2.micro"
-#   image_id = module.microservices.image_id
-# }
+  // Launch Template Settings:
+  instance_type = "t2.micro"
+}
