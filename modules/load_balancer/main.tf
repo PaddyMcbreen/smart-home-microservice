@@ -15,7 +15,7 @@ resource "aws_lb" "loadbalancer" {
 
 // Load-Balancer Target Groups:
 resource "aws_lb_target_group" "lb_targetGroups" {
-  count = 3
+  count = var.num_targetGroups
 
   name = "${element(["lighting", "heating", "status"], count.index)}-tg"
   port = 3000
