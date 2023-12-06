@@ -24,3 +24,9 @@ variable "lb_listner_name" {
     type = string 
     description = "The name of the load-balance listner"
 }
+
+variable "num_targetGroups" {
+    type = number 
+    description = "The number of target groups you want to create"
+    default = 3
+}
