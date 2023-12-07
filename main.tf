@@ -37,6 +37,7 @@ module "microservices" {
   // AMI Settings:
   num_ami = 3
   ami_names = ["lighting", "heating", "status"]
+  ami_filterName = "name"
 
   // Ec2 Settings:
   num_ec2 = 3
