@@ -34,3 +34,43 @@ variable "enable_internet_gateway" {
 }
 
 
+variable "publicSubnets_name" {
+  type = string 
+  description = "The names of your public subnets"
+}
+
+variable "privateSubnets_name" {
+  type = string 
+  description = "The names of your private subnets"
+}
+
+variable "ig_name" {
+  type = string 
+  description = "The name of your internet gateway"
+}
+
+variable "public_rt_name" {
+  type = string 
+  description = "The name of your public route table"
+}
+
+
+variable "private_rt_names" {
+  type = string 
+  description = "The names of your private route table"
+}
+
+variable "nat_name" {
+  type = string 
+  description = "The Name of your nat internet gateway"
+}
+
+
+
+
+
+
+
+
+
+ 
