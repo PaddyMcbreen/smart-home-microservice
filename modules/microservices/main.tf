@@ -2,10 +2,10 @@
 data "aws_ami" "ubuntu" {
   // Gets the latest ubuntu AMI ID
   most_recent = true
-  count = 3
+  count = var.num_ami
 
   filter {
-    name   = "name"
+    name   = var.ami_filterName
     values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20231127"]
   }
 
@@ -15,7 +15,7 @@ data "aws_ami" "ubuntu" {
   }
 
   tags = {
-    Name = "${element(["lighting", "heating", "status"], count.index)}_ami"
+    Name = "${var.ami_names[count.index]}_ami"
   }
 
   owners = ["099720109477"] # Canonical's ID - creators of the Ubuntu AMI
@@ -25,16 +25,16 @@ data "aws_ami" "ubuntu" {
 // Ec2 Instance for all microservices:
 resource "aws_instance" "microservices" {
 
-count = 3
+count = var.num_ec2
 instance_type               = var.instance_type
 subnet_id                   = var.public_subnets_ids[0]
-vpc_security_group_ids      = [var.security_group_id]
+vpc_security_group_ids      = [var.security_group_ids]
 ami                         = data.aws_ami.ubuntu[count.index].id
 associate_public_ip_address = true
 key_name = var.key_name
 
 tags = {
-    Name = "${element(["lighting", "heating", "status"], count.index)}_Ec2"
+    Name = "${var.ec2_names[count.index]}-instance"
   }
 }
 
@@ -42,11 +42,10 @@ tags = {
 // DynamoDB Setup for all microservices:
 resource "aws_dynamodb_table" "microservices_table" {
 
-count = 2
-name           = "${element(["lighting", "heating"], count.index)}_table"
-billing_mode   = "PROVISIONED"
-read_capacity  = 20
-write_capacity = 20
+count = var.dynamo_num
+name           = "${var.dynamo_name[count.index]}-table"
+read_capacity  = var.read_cap
+write_capacity = var.write_cap
 hash_key       =  "id"
 
 
