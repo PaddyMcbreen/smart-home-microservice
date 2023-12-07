@@ -54,3 +54,13 @@ variable "num_ec2" {
     type = number 
     description = "The number of Ec2 instances you want to create for your microservices"
 }
+
+variable "read_cap" {
+    type = number 
+    description = "The read capacity given to the users for the DynamoDB tables"
+}
+
+variable "write_cap" {
+    type = number 
+    description = "The write capacity given to the users for the DynamoDB tables"
+}

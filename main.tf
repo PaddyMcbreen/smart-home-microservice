@@ -44,6 +44,8 @@ module "microservices" {
   // DynamoDB Settings:
   dynamo_num = 2
   dynamo_name = ["lighting", "heating"]
+  read_cap = 20
+  write_cap = 20
 }
 
 
