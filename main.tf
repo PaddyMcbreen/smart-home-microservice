@@ -33,8 +33,20 @@ module "microservices" {
   security_group_ids = module.security_group.security_group_id
   public_subnets_ids = module.vpc.public_subnets_ids
 
-  # num_ami = 3
-  # num_dynamoTable = 2
+
+  // AMI Settings:
+  num_ami = 3
+  ami_names = ["lighting", "heating", "status"]
+
+  // Ec2 Settings:
+  num_ec2 = 3
+  ec2_names = ["lighting", "heating", "status"]
+
+  // DynamoDB Settings:
+  dynamo_num = 2
+  dynamo_name = ["lighting", "heating"]
+  read_cap = 20
+  write_cap = 20
 }
 
 
