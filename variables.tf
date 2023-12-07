@@ -15,3 +15,10 @@ variable "private-subnet-count" {
   // Remove default value to ask for user input
   default = 3
 }
+
+// Instance type:
+variable "instance_type" {
+  type        = string
+  description = "The instance type of EC2 to create"
+  default     = "t2.micro"
+}

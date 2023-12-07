@@ -3,6 +3,7 @@ variable "vpc_id" {
     description = "The id of the VPC created in modules/vpc/main.tf"
 }
 
+
 variable "sg_name" {
     type = string 
     description = "The name of your security group"
@@ -143,5 +144,3 @@ variable "to_localPort_ipv4" {
     type = number 
     description = "The incoming port number for ingress SSH"
   }
-
-
