@@ -48,10 +48,18 @@ module "load_balancer" {
 
   // Target Group Settings:
   vpc_id = module.vpc.vpc_id
-  # num_targetGroups = 3
+  tg_name = ["lighting", "heating", "status"]
+  tg_port = 3000
+  tg_protocol = "HTTP"
 
   // Lb Listner Settings:
   lb_listner_name = "lb_listner"
+  lb_port = 80
+  lb_protocol = "HTTP"
+
+  // Lb Listner Rule Settings:
+  # path_values = ["/api/heating", "/api/status"]
+  # num_listnerRules = 2
 }
 
 

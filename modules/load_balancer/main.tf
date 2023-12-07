@@ -17,17 +17,28 @@ resource "aws_lb" "loadbalancer" {
 resource "aws_lb_target_group" "lb_targetGroups" {
   count = var.num_targetGroups
 
-  name = "${element(["lighting", "heating", "status"], count.index)}-tg"
-  port = 3000
-  protocol = "HTTP"
+  name =  var.tg_name[count.index]
+
+  port = var.tg_port 
+  protocol = var.tg_protocol
   vpc_id = var.vpc_id
+
+  health_check {
+    path = "/api/${var.tg_name[count.index]}/health"
+    protocol = var.tg_protocol
+  }
+
+  tags = {
+    Name = "${var.tg_name[count.index]}_tg"
+  }
 }
 
 // Load-balance Listner Setup:
 resource "aws_lb_listener" "lb_listner" {
+
   load_balancer_arn = aws_lb.loadbalancer.arn
-  port              = "80"
-  protocol          = "HTTP"
+  port              = var.lb_port
+  protocol          = var.lb_protocol
 
   default_action {
     type             = "forward"
@@ -55,6 +66,7 @@ resource "aws_lb_listener_rule" "heating_rule" {
       values = ["/api/heating"]
     }
   }
+  
 }
 
 
@@ -74,3 +86,24 @@ resource "aws_lb_listener_rule" "status_rule" {
     }
   }
 }
+
+// refactor attempt:
+// Load Balance Listners:
+# resource "aws_lb_listener_rule" "lb_listnerRules" {
+
+#   count = var.num_listnerRules
+#   listener_arn = aws_lb_listener.lb_listner.arn
+
+#   action {
+#     type             = "forward"
+#     target_group_arn = aws_lb_target_group.lb_targetGroups[count.index + 1].arn
+#   }
+
+#   condition {
+#     path_pattern {
+#       values = var.path_values[count.index]
+#     }
+#   }
+# }
+
+
