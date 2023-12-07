@@ -31,7 +31,7 @@ variable "num_ami" {
 }
 
 variable "ami_names" {
-    type = liat(string) 
+    type = list(string) 
     description = "The names of the AMIs created"
 }
 
