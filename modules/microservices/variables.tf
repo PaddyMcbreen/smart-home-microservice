@@ -8,7 +8,7 @@ variable "public_subnets_ids" {
     description = "A list of public subnets to launch you ec2 instances in"
 }
 
-variable "security_group_id" {
+variable "security_group_ids" {
     type = string
     description = "The security group ID assigned to your instance"
 }

@@ -33,6 +33,7 @@ module "microservices" {
   security_group_ids = module.security_group.security_group_id
   public_subnets_ids = module.vpc.public_subnets_ids
 
+
   // AMI Settings:
   num_ami = 3
   ami_names = ["lighting", "heating", "status"]
