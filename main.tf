@@ -1,5 +1,5 @@
 // VPC Module
-module "new-vpc" {
+module "vpc" {
   source = "./modules/vpc"
 
   // VPC Settings:
