@@ -64,3 +64,8 @@ variable "write_cap" {
     type = number 
     description = "The write capacity given to the users for the DynamoDB tables"
 }
+
+variable "ami_filterName" {
+    type = string 
+    description = "The filter name for your AMI"
+}
