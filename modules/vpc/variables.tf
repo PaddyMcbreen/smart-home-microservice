@@ -1,4 +1,4 @@
-//name change
+# //name change
 variable "name" {
   type = string
   default = "new-vpc"
@@ -7,8 +7,6 @@ variable "name" {
 // Public Subnets: 
 variable "public_subnet_count" {
   type = number
-
-  // Remove default value to ask for user input
   default = 3
 }
 
@@ -21,8 +19,6 @@ variable "azs_config" {
 // Private Subnets: 
 variable "private_subnet_count" {
   type = number
-
-  // Remove default value to ask for user input
   default = 3
 }
 

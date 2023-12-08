@@ -70,3 +70,18 @@ variable "name_asg" {
     description = "The names of the auto scaling groups created"
 }
 
+
+variable "instance_ids" {
+    type = list(string) 
+    description = "A list of ec2 IDs"
+}
+
+variable "ami_names" {
+    type = list(string)
+    description = "Names of AMIs"
+}
+
+variable "ami_names_rep" {
+    type = list(string)
+    description = "Names of AMIs"
+}

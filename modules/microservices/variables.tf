@@ -19,12 +19,6 @@ variable "key_name" {
     default = "terraform-project-key"
 }
 
-variable "name" {
-    type = string 
-    description = "The name of your AMI"
-    default = "new_ami"
-}
-
 variable "num_ami" {
     type = number 
     description = "The number of AMIs you want to create (matches the number of microservices)"

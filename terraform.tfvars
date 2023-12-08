@@ -85,9 +85,9 @@
   key_name = "terraform-project-key"
 
   // AMI Settings:
-  name     = "new_ami"
   num_ami = 3
   ami_names = ["lighting", "heating", "status"]
+  ami_names_rep = ["lighting_clone", "heating_clone", "status_clone"]
   ami_filterName = "name"
 
   // Ec2 Settings:

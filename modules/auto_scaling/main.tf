@@ -13,6 +13,14 @@ resource "aws_launch_template" "launch_templates" {
   }
 }
 
+// AWS AMI instance:
+resource "aws_ami_from_instance" "microservice-ami" {
+  count = length(var.instance_ids)
+  name               = "${var.ami_names_rep[count.index]}-ami"
+  source_instance_id = var.instance_ids[count.index]
+}
+
+
 // Auto Scaling Group Setup:
 resource "aws_autoscaling_group" "microservice_asg" {
   count = var.num_asg

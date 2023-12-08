@@ -14,10 +14,6 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
 
-  tags = {
-    Name = "${var.ami_names[count.index]}_ami"
-  }
-
   owners = ["099720109477"] # Canonical's ID - creators of the Ubuntu AMI
 }
 
