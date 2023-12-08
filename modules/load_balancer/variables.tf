@@ -28,7 +28,6 @@ variable "lb_listner_name" {
 variable "num_targetGroups" {
     type = number 
     description = "The number of target groups you want to create"
-    default = 3
 }
 
 variable "tg_name" {

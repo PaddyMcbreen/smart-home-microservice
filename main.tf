@@ -80,15 +80,11 @@ module "security_group" {
 module "microservices" {
   source = "./modules/microservices"
 
-  name     = "new_ami"
+  // Key Settings:
   key_name = "terraform-project-key"
 
-  instance_type      = var.instance_type
-  security_group_ids = module.security_group.security_group_id
-  public_subnets_ids = module.vpc.public_subnets_ids
-
-
   // AMI Settings:
+  name     = "new_ami"
   num_ami = 3
   ami_names = ["lighting", "heating", "status"]
   ami_filterName = "name"
@@ -96,6 +92,9 @@ module "microservices" {
   // Ec2 Settings:
   num_ec2 = 3
   ec2_names = ["lighting", "heating", "status"]
+  instance_type      = var.instance_type
+  security_group_ids = module.security_group.security_group_id
+  public_subnets_ids = module.vpc.public_subnets_ids
 
   // DynamoDB Settings:
   dynamo_num = 2
@@ -109,6 +108,7 @@ module "microservices" {
 module "load_balancer" {
   source = "./modules/load_balancer"
 
+  // Load-Balancer Settings:
   lb_name            = "microservicesLB"
   public_subnets_ids = module.vpc.public_subnets_ids
   security_group_ids = [module.security_group.security_group_id]
@@ -118,6 +118,7 @@ module "load_balancer" {
   tg_name = ["lighting", "heating", "status"]
   tg_port = 3000
   tg_protocol = "HTTP"
+  num_targetGroups = 3
 
   // Target Group Attachment Settings:
   num_ec2 = [module.microservices.num_ec2]
