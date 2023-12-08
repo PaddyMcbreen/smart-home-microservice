@@ -81,3 +81,11 @@ This module configures auto-scaling groups and launch templates.
 Modify the variables in the respective modules to customize the infrastructure according to your requirements. Adjust the VPC, security, microservices, load balancer, and auto-scaling settings based on your specific needs. Ensure that you review and understand the changes you make before applying them.
 
 Feel free to contribute, report issues, or suggest improvements to this Terraform codebase. Happy coding!
+
+
+
+
+Terraform Graph displaying the infrastructure created within this git repository:
+![terraform_graph](https://github.com/PaddyMcbreen/ce-terraform-project/assets/115741865/35480314-0c88-4eb8-a60c-8a3d69e51fd5)
+
+
