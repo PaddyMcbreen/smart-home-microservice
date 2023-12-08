@@ -56,12 +56,12 @@ variable "lb_protocol" {
     description = "The protocol of your load balance listner"
 }
 
-# variable "path_values" {
-#     type = list(string) 
-#     description = "The paths to the microservices for each lb listner rule"
-# }
+variable "instance_ids" {
+    type = list(string)
+    description = "All the IDs of the Ec2 instances created"
+}
 
-# variable "num_listnerRules" {
-#     type = number 
-#     description = "The number of listner rules you want to create"
-# }
+variable "num_ec2" {
+    type = list(string) 
+    description = "The number of ec2 instances that has been created"
+}

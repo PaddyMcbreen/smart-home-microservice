@@ -13,3 +13,11 @@ output "security_group_ids" {
 output "key_name" {
     value = var.key_name
 }
+
+output "instance_ids" {
+    value = aws_instance.microservices[*].id
+}
+
+output "num_ec2" {
+    value = var.num_ec2
+}

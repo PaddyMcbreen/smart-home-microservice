@@ -34,7 +34,7 @@ module "security_group" {
   source = "./modules/security_groups"
 
   // Security Group Settings:
-  vpc_id = module.new-vpc.vpc_id
+  vpc_id = module.vpc.vpc_id
   sg_name = "microservice_sg"
 
   // HTTP ipv6 Ingress Settings:
@@ -118,6 +118,10 @@ module "load_balancer" {
   tg_name = ["lighting", "heating", "status"]
   tg_port = 3000
   tg_protocol = "HTTP"
+
+  // Target Group Attachment Settings:
+  num_ec2 = [module.microservices.num_ec2]
+  instance_ids = module.microservices.instance_ids
 
   // Lb Listner Settings:
   lb_listner_name = "lb_listner"

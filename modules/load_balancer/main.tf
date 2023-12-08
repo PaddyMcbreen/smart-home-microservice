@@ -13,6 +13,8 @@ resource "aws_lb" "loadbalancer" {
   }
 }
 
+
+
 // Load-Balancer Target Groups:
 resource "aws_lb_target_group" "lb_targetGroups" {
   count = var.num_targetGroups
@@ -32,6 +34,15 @@ resource "aws_lb_target_group" "lb_targetGroups" {
     Name = "${var.tg_name[count.index]}_tg"
   }
 }
+
+
+// Target Group Attachment:
+resource "aws_lb_target_group_attachment" "lb_attachment" {
+  count = length(var.num_ec2)
+  target_group_arn = aws_lb_target_group.lb_targetGroups[count.index].arn
+  target_id        = var.instance_ids[count.index]
+}
+
 
 // Load-balance Listner Setup:
 resource "aws_lb_listener" "lb_listner" {
@@ -87,23 +98,5 @@ resource "aws_lb_listener_rule" "status_rule" {
   }
 }
 
-// refactor attempt:
-// Load Balance Listners:
-# resource "aws_lb_listener_rule" "lb_listnerRules" {
-
-#   count = var.num_listnerRules
-#   listener_arn = aws_lb_listener.lb_listner.arn
-
-#   action {
-#     type             = "forward"
-#     target_group_arn = aws_lb_target_group.lb_targetGroups[count.index + 1].arn
-#   }
-
-#   condition {
-#     path_pattern {
-#       values = var.path_values[count.index]
-#     }
-#   }
-# }
 
 
