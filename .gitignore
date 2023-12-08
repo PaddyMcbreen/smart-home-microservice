@@ -1,4 +1,7 @@
 .terraform
 .env.local
+terraform.tfstate
+terraform.tfstate.backup
 
-
+terraform-project-key.pem
+terraform-project-key.pemZone.Identifier
