@@ -82,7 +82,7 @@ to_port_ssh     = 22
 // ------------------------------------------------------- //
 
 // Key Settings:
-key_name = "terraform-project-key"
+key_name = "Enter your key created in AWS"
 
 // AMI Settings:
 num_ami        = 3
