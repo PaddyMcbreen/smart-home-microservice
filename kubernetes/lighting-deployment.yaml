@@ -16,4 +16,4 @@ spec:
       - name: lighting-argo
         image: paddymcbreen/lights-img:1.0
         ports:
-        - containerPort: 80
+        - containerPort: 3000

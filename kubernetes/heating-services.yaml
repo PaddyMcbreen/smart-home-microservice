@@ -7,6 +7,6 @@ spec:
     app: heating-deployment-argo
   ports:
     - protocol: TCP
-      port: 3000
-      targetPort: 80
+      port: 3001
+      targetPort: 3000
   type: ClusterIP
