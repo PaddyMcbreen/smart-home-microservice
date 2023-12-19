@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: lighting-deployment-argo
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: lighting-deployment-argo
