@@ -4,27 +4,28 @@ metadata:
   name: microservices-ing
 spec:
   rules:
-  - http:
-      paths:
-      - path: /api/status
-        pathType: Prefix
-        backend:
-          service:
-            name: status
-            port:
-              number: 3002
-      - path: /api/lights
-        pathType: Prefix
-        backend:
-          service:
-            name: lights
-            port:
-              number: 3001
-      - path: /api/heating
-        pathType: Prefix
-        backend:
-          service:
-            name: heating
-            port:
-              number: 3000
+  - host: localhost
+    - http:
+        paths:
+          - path: /api/status
+            pathType: Prefix
+            backend:
+              service:
+                name: status
+                port:
+                  number: 3002
+          - path: /api/lights
+            pathType: Prefix
+            backend:
+              service:
+                name: lights
+                port:
+                  number: 3001
+          - path: /api/heating
+            pathType: Prefix
+            backend:
+              service:
+                name: heating
+                port:
+                  number: 3000
   ingressClassName: nginx
