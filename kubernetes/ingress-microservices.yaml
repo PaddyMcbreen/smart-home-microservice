@@ -4,7 +4,7 @@ metadata:
   name: microservices-ing
 spec:
   rules:
-  - host: localhost
+    - host: localhost
     - http:
         paths:
           - path: /api/status
