@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: lighting-nginx
+  name: lighting-deployment-argo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: lighting-nginx
+      app: lighting-deployment-argo
   template:
     metadata:
       labels:
-        app: lighting-nginx
+        app: lighting-deployment-argo
     spec:
       containers:
       - name: lighting-argo
-        image: 
+        image: paddymcbreen/lights-img:1.0
         ports:
         - containerPort: 80
