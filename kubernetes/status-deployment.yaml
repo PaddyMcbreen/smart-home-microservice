@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: status-deployment-argo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: status-deployment-argo
+  template:
+    metadata:
+      labels:
+        app: status-deployment-argo
+    spec:
+      containers:
+      - name: status-argo
+        image: paddymcbreen/status-img:1.0
+        ports:
+        - containerPort: 80
