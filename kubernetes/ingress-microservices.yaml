@@ -13,19 +13,19 @@ spec:
               service:
                 name: status
                 port:
-                  number: 3002
+                  number: 3000
           - path: /api/lights
             pathType: Prefix
             backend:
               service:
                 name: lights
                 port:
-                  number: 3001
+                  number: 3002
           - path: /api/heating
             pathType: Prefix
             backend:
               service:
                 name: heating
                 port:
-                  number: 3000
+                  number: 3001
   ingressClassName: nginx
