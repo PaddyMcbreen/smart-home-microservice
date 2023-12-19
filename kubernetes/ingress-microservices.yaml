@@ -11,21 +11,21 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: status-deployment-argo
+                name: status-argo-service
                 port:
                   number: 3000
           - path: /api/lights
             pathType: Prefix
             backend:
               service:
-                name: lighting-deployment-argo
+                name: lighting-argo-service
                 port:
                   number: 3002
           - path: /api/heating
             pathType: Prefix
             backend:
               service:
-                name: heating-deployment-argo
+                name: heating-argo-service
                 port:
                   number: 3001
   ingressClassName: nginx
