@@ -7,6 +7,6 @@ spec:
     app: {{ .Values.status_deployment.status_deployment_name }}
   ports:
     - protocol: {{ .Values.status_deployment.status_protocol }}
-      port: {{ .Values.status_deployment.status_port }}
-      targetPort: {{ .Values.status_service.container_port }}
+      port: {{ .Values.status_service.port }}
+      targetPort: {{ .Values.status_deployment.container_port }}
   type: {{ .Values.status_deployment.status_type }}

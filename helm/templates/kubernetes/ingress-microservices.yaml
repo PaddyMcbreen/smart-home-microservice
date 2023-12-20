@@ -15,7 +15,7 @@ spec:
               service:
                 name: {{ .Values.status_service.status_service_name }}
                 port:
-                  number: {{ .Values.status_deployment.target_port }}
+                  number: {{ .Values.status_service.port }}
 
 
           - path: {{ .Values.ingress_controller.lights_path }}
@@ -24,7 +24,7 @@ spec:
               service:
                 name: {{ .Values.lighting_service.lighting_service_name }}
                 port:
-                  number: {{ .Values.lighting_service.target_port }}
+                  number: {{ .Values.lighting_service.port }}
 
 
           - path: {{ .Values.ingress_controller.heating_path }}
@@ -33,7 +33,7 @@ spec:
               service:
                 name: {{ .Values.heating_service.heating_service_name }}
                 port:
-                  number: {{ .Values.heating_service.target_port }}
+                  number: {{ .Values.heating_service.port }}
 
                   
   ingressClassName: {{ .Values.ingress_controller_ingressClassName }}

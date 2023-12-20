@@ -8,7 +8,7 @@ heating_deployment:
 
  container_name: heating-argo
  container_image: paddymcbreen/heating-img:1.0
- container_port: 3001
+ container_port: 3000
  
 
 # Heating Service Settings: 
@@ -17,7 +17,7 @@ heating_service:
  heating_apiVersion_service: v1
  heating_service_name: heating-argo-service
  heating_protocol: TCP
- target_port: 3000
+ port: 3003
  heating_type: ClusterIP
 
 
@@ -31,7 +31,7 @@ lighting_deployment:
 
  container_name: lighting-argo
  container_image: paddymcbreen/lights-img:1.0
- container_port: 3002
+ container_port: 3000
 
 # Lighting Service Settings: 
 
@@ -39,7 +39,7 @@ lighting_service:
  lighting_apiVersion_service: v1
  lighting_service_name: lighting-argo-service
  lighting_protocol: TCP
- target_port: 3000
+ port: 3002
  lighting_type: ClusterIP
 
 
@@ -52,7 +52,7 @@ status_deployment:
 
  container_name: status-argo
  container_image: paddymcbreen/status-img:1.0
- container_port: 3003
+ container_port: 3000
 
 # Status Service Settings: 
 
@@ -60,7 +60,7 @@ status_service:
  status_apiVersion_service: v1
  status_service_name: status-argo-service
  status_protocol: TCP
- target_port: 3000
+ port: 3001
  status_type: ClusterIP
 
 
