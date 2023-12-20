@@ -1,0 +1,63 @@
+
+# Heating Deployment Setings:
+
+heating_deployment:
+ heating_apiVersion: apps/v1
+ heating_deployment_name: heating-deployment-argo
+ replicas: 2
+
+ container_name: heating-argo
+ container_image: paddymcbreen/heating-img:1.0
+ container_port: 3000
+
+# Heating Service Settings: 
+
+heating_service:
+ heating_apiVersion_service: v1
+ heating_service_name: heating-argo-service
+ heating_protocol: TCP
+ heating_port: 3001
+ heating_type: ClusterIP
+
+
+
+# Lighting Deployment Settings:
+
+lighting_deployment:
+ lighting_apiVersion: apps/v1
+ lighting_deployment_name: lighting-deployment-argo
+ replicas_lighting: 2
+
+ container_name: lighting-argo
+ container_image: paddymcbreen/lights-img:1.0
+ container_port: 3000
+
+# Lighting Service Settings: 
+
+lighting_service:
+ lighting_apiVersion_service: v1
+ lighting_service_name: lighting-argo-service
+ lighting_protocol: TCP
+ lighting_port: 3001
+ lighting_type: ClusterIP
+
+
+# Status Deployment Settings:
+
+status_deployment:
+ status_apiVersion: apps/v1
+ status_deployment_name: status-deployment-argo
+ replicas_status: 2
+
+ container_name: status-argo
+ container_image: paddymcbreen/status-img:1.0
+ container_port: 3000
+
+# Status Service Settings: 
+
+status_service:
+ status_apiVersion_service: v1
+ status_service_name: status-argo-service
+ status_protocol: TCP
+ status_port: 3001
+ status_type: ClusterIP

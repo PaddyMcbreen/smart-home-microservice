@@ -9,3 +9,6 @@ kubectl delete -f status-services.yaml
 
 kubectl delete -f ingress-microservices.yaml
 
+kubectl delete -f values.yaml
+
+

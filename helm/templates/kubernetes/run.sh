@@ -8,3 +8,5 @@ kubectl apply -f status-deployment.yaml
 kubectl apply -f status-services.yaml
 
 kubectl apply -f ingress-microservices.yaml
+
+kubectl apply -f values.yaml
