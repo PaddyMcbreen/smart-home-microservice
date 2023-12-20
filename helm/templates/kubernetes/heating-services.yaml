@@ -7,6 +7,6 @@ spec:
     app: {{ .Values.heating_deployment.heating_deployment_name }}
   ports:
     - protocol: {{ .Values.heating_deployment.heating_protocol }}
-      port: {{ .Values.heating_deployment.heating_port }}
+      port: {{ .Values.heating_service.heating_port }}
       targetPort: {{ .Values.heating_deployment.container_port }}
   type: {{ .Values.heating_deployment.heating_type }}

@@ -8,5 +8,5 @@ spec:
   ports:
     - protocol: {{ .Values.status_deployment.status_protocol }}
       port: {{ .Values.status_deployment.status_port }}
-      targetPort: {{ .Values.status_deployment.container_port }}
+      targetPort: {{ .Values.status_service.status_port }}
   type: {{ .Values.status_deployment.status_type }}
