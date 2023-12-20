@@ -17,3 +17,9 @@ spec:
         image: {{ .Values.status_deployment.container_image }}
         ports:
         - containerPort: {{ .Values.status_deployment.container_port }}
+
+        env:
+        - name: LIGHTS_SERVICE
+          value: http://lights-service.default.svc.cluster.local:3002
+        - name: HEATING_SERVICE
+          value: http://heating-service.default.svc.cluster.local:3003
