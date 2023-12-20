@@ -8,7 +8,7 @@ heating_deployment:
 
  container_name: heating-argo
  container_image: paddymcbreen/heating-img:1.0
- container_port: 3000
+ container_port: 80
 
 # Heating Service Settings: 
 
@@ -30,7 +30,7 @@ lighting_deployment:
 
  container_name: lighting-argo
  container_image: paddymcbreen/lights-img:1.0
- container_port: 3000
+ container_port: 80
 
 # Lighting Service Settings: 
 
@@ -51,7 +51,7 @@ status_deployment:
 
  container_name: status-argo
  container_image: paddymcbreen/status-img:1.0
- container_port: 3000
+ container_port: 80
 
 # Status Service Settings: 
 
