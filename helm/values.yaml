@@ -26,7 +26,7 @@ heating_service:
 lighting_deployment:
  lighting_apiVersion: apps/v1
  lighting_deployment_name: lighting-deployment-argo
- replicas_lighting: 2
+ replicas: 2
 
  container_name: lighting-argo
  container_image: paddymcbreen/lights-img:1.0
@@ -47,7 +47,7 @@ lighting_service:
 status_deployment:
  status_apiVersion: apps/v1
  status_deployment_name: status-deployment-argo
- replicas_status: 2
+ replicas: 2
 
  container_name: status-argo
  container_image: paddymcbreen/status-img:1.0
