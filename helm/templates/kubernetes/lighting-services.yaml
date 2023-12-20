@@ -7,6 +7,6 @@ spec:
     app: {{ .Values.lighting_deployment.lighting_deployment_name }}
   ports:
     - protocol: {{ .Values.lighting_deployment.lighting_protocol }}
-      port: {{ .Values.lighting_deployment.lighting_port }}
+      port: {{ .Values.lighting_deployment.container_port }}
       targetPort: {{ .Values.lighting_service.lighting_port }}
   type: {{ .Values.lighting_deployment.lighting_type }}
