@@ -1,31 +1,31 @@
-apiVersion: networking.k8s.io/v1
+apiVersion: {{ .Values.ingress_controller.apiVersion }}
 kind: Ingress
 metadata:
-  name: microservices-ing
+  name: {{ .Values.ingress_controller.name }}
 spec:
   rules:
-    - host: localhost
+    - host: {{ .Values.ingress_controller.host }}
     - http:
         paths:
-          - path: /api/status
-            pathType: Prefix
+          - path: {{ .Values.ingress_controller.status_path }}
+            pathType: {{ .Values.ingress_controller.pathType }}
             backend:
               service:
-                name: status-argo-service
+                name: {{ .Values.status_service.statu_service_name }}
                 port:
-                  number: 3000
-          - path: /api/lights
-            pathType: Prefix
+                  number: {{ .Values.status_deployment.container_port }}
+          - path: {{ .Values.ingress_controller.lights_path }}
+            pathType: {{ .Values.ingress_controller.pathType }}
             backend:
               service:
-                name: lighting-argo-service
+                name: {{ .Values.lighting_service.lighting_service_name }}
                 port:
-                  number: 3002
-          - path: /api/heating
-            pathType: Prefix
+                  number: {{ .Values.lighting_service.lighting_port }}
+          - path: {{ .Values.ingress_controller.heating_path }}
+            pathType: {{ .Values.ingress_controller.pathType }}
             backend:
               service:
-                name: heating-argo-service
+                name: {{ .Values.heating_service.heating_service_name }}
                 port:
-                  number: 3001
-  ingressClassName: nginx
+                  number: {{ .Values.heating_service.heating_port }}
+  ingressClassName: {{ .Values.ingress_controller_ingressClassName }}

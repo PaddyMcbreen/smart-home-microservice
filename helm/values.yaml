@@ -61,3 +61,24 @@ status_service:
  status_protocol: TCP
  status_port: 3003
  status_type: ClusterIP
+
+
+
+# Ingress Controller Settings:
+
+ingress_controller:
+ apiVersion: networking.k8s.io/v1
+ name: microservice-ing
+
+ host: localhost
+ pathType: Prefix
+
+ status_path: /api/status
+
+ lights_path: /api/lights
+
+ heating_path: /api/heating
+
+ ingressClassName: nginx
+
+
