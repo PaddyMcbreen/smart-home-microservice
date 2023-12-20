@@ -36,4 +36,4 @@ spec:
                   number: {{ .Values.heating_service.port }}
 
                   
-  ingressClassName: {{ .Values.ingress_controller_ingressClassName }}
+  ingressClassName: {{ .Values.ingress_controller.ingressClassName }}
