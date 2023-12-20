@@ -1,0 +1,12 @@
+apiVersion: {{ .Values.lighting_service.lighting_apiVersion_service }}
+kind: Service
+metadata:
+  name: {{ .Values.lighting_service.lighting_service_name }}
+spec:
+  selector:
+    app: {{ .Values.lighting_deployment.lighting_deployment_name }}
+  ports:
+    - protocol: {{ .Values.lighting_deployment.lighting_protocol }}
+      port: {{ .Values.lighting_deployment.lighting_port }}
+      targetPort: {{ .Values.lighting_deployment.container_port }}
+  type: {{ .Values.lighting_deployment.lighting_type }}

@@ -1,0 +1,19 @@
+apiVersion: {{ .Values.lighting_deployment.lighting_apiVersion }}
+kind: Deployment
+metadata:
+  name: {{ .Values.lighting_deployment.lighting_deployment_name }}
+spec:
+  replicas: {{ .Values.lighting_deployment.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.lighting_deployment.lighting_deployment_name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.lighting_deployment.lighting_deployment_name }}
+    spec:
+      containers:
+      - name: {{ .Values.lighting_deployment.container_name }}
+        image: {{ .Values.lighting_deployment.container_image }}
+        ports:
+        - containerPort: {{ .Values.lighting_deployment.container_port }}

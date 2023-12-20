@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: microservices-ing
+spec:
+  rules:
+    - host: localhost
+    - http:
+        paths:
+          - path: /api/status
+            pathType: Prefix
+            backend:
+              service:
+                name: status-argo-service
+                port:
+                  number: 3000
+          - path: /api/lights
+            pathType: Prefix
+            backend:
+              service:
+                name: lighting-argo-service
+                port:
+                  number: 3002
+          - path: /api/heating
+            pathType: Prefix
+            backend:
+              service:
+                name: heating-argo-service
+                port:
+                  number: 3001
+  ingressClassName: nginx

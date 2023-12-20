@@ -1,0 +1,12 @@
+apiVersion: {{ .Values.heating_service.heating_apiVersion_service }}
+kind: Service
+metadata:
+  name: {{ .Values.heating_service.heating_service_name }}
+spec:
+  selector:
+    app: {{ .Values.heating_deployment.heating_deployment_name }}
+  ports:
+    - protocol: {{ .Values.heating_deployment.heating_protocol }}
+      port: {{ .Values.heating_deployment.heating_port }}
+      targetPort: {{ .Values.heating_deployment.container_port }}
+  type: {{ .Values.heating_deployment.heating_type }}

@@ -1,0 +1,19 @@
+apiVersion: {{ .Values.heating_deployment.heating_apiVersion }}
+kind: Deployment
+metadata:
+  name: {{ .Values.heating_deployment.heating_deployment_name }}
+spec:
+  replicas:  {{ .Values.heating_deployment.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.heating_deployment.heating_deployment_name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.heating_deployment.heating_deployment_name }}
+    spec:
+      containers:
+      - name: {{ .Values.heating_deployment.container_name }}
+        image: {{ .Values.heating_deployment.container_image }}
+        ports:
+        - containerPort: {{ .Values.heating_deployment.container_port }}
