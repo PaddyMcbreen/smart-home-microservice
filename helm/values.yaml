@@ -8,7 +8,7 @@ heating_deployment:
 
  container_name: heating-argo
  container_image: paddymcbreen/heating-img:1.0
- container_port: 80
+ container_port: 3000
 
 # Heating Service Settings: 
 
