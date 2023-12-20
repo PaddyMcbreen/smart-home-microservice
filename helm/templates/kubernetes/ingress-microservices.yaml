@@ -6,7 +6,7 @@ metadata:
 spec:
   rules:
     - host: {{ .Values.ingress_controller.host }}
-    - http:
+      http:
         paths:
 
           - path: {{ .Values.ingress_controller.status_path }}
